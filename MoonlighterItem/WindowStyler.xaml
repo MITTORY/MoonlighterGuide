@@ -1,0 +1,184 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Стиль для заголовков -->
+    <Style x:Key="HeaderTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="23"/>
+        <Setter Property="FontFamily" Value="TT Milks"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect ShadowDepth="2" Color="#191919" Opacity="1" BlurRadius="5"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Размер страницы-->
+    <Style TargetType="Thumb">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Thumb">
+                    <Border Background="{TemplateBinding Background}" Cursor="{TemplateBinding Cursor}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#55000000"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Общий стиль для навигационных кнопок -->
+    <Style x:Key="NavigationButtonStyle" TargetType="Button">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="TT Milks"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="180"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF5C8374" Offset="0"/>
+                    <!-- Основной цвет -->
+                    <GradientStop Color="#FF3A6351" Offset="1"/>
+                    <!-- Темный оттенок -->
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                        CornerRadius="10">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Эффект при наведении -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#FF6C9A88" Offset="0"/>
+                                        <!-- Светлый оттенок при наведении -->
+                                        <GradientStop Color="#FF4A7564" Offset="1"/>
+                                        <!-- Темный оттенок при наведении -->
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                        </Trigger>
+
+                        <!-- Стиль для состояния IsEnabled="False" -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#FFA0A0A0" Offset="0"/>
+                                        <!-- Серый цвет для отключенного состояния -->
+                                        <GradientStop Color="#FF808080" Offset="1"/>
+                                        <!-- Темно-серый оттенок -->
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground" Value="DarkSlateGray"/>
+                            <!-- Серый текст для отключенного состояния -->
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="1" Color="#40000000" Opacity="0.5" BlurRadius="3"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+
+                        <!-- Возврат к исходному состоянию -->
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#FF5C8374" Offset="0"/>
+                                        <GradientStop Color="#FF3A6351" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect ShadowDepth="2" Color="#40000000" Opacity="0.8" BlurRadius="5"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Кнопки на панели-->
+    <Style x:Key="HoverButtonStyle" TargetType="Button" BasedOn="{StaticResource NavigationButtonStyle}">
+        <Setter Property="Background" Value="#FF3A6351"/>
+        <!-- Основной цвет кнопки -->
+        <Setter Property="Foreground" Value="White"/>
+        <!-- Цвет текста -->
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <!-- Триггер для наведения -->
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FF1E3A2F"/>
+                <!-- Цвет при наведении -->
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect ShadowDepth="3" BlurRadius="10" Opacity="0.5" Color="Black"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <!-- Триггер для отключенного состояния -->
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#FF2A5241"/>
+                <Setter Property="Foreground" Value="#FFDAC29E"/>
+                <Setter Property="Opacity" Value="0.8"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Стиль для логотипа -->
+    <Style x:Key="LogoStyle" TargetType="Image">
+        <Setter Property="Width" Value="170"/>
+        <Setter Property="Height" Value="70"/>
+        <Setter Property="Stretch" Value="Fill"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect ShadowDepth="0" Color="White" BlurRadius="20" Opacity="0.5"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

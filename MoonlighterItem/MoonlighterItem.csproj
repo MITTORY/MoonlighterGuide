@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{886C54C6-0D2D-4625-9B79-607D9B326557}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MoonlighterItem</RootNamespace>
+    <AssemblyName>MoonlighterItem</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.2\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.IO.Pipelines, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.9.0.2\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.9.0.2\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.9.0.2\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ArmorPage.xaml.cs">
+      <DependentUpon>ArmorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InfoPage.xaml.cs">
+      <DependentUpon>InfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationWindow.xaml.cs">
+      <DependentUpon>NotificationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomePage.xaml.cs">
+      <DependentUpon>WelcomePage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ArmorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ArtifactsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ArtifactsPage.xaml.cs">
+      <DependentUpon>ArtifactsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="NotificationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowStyler.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.en-US.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Vine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Crystallized_Energy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AC_Adapter.png" />
+    <Resource Include="Images\Ancient_Wood.png" />
+    <Resource Include="Images\Blade_Leaves.png" />
+    <Resource Include="Images\Botany_Jottings_I.png" />
+    <Resource Include="Images\Botany_Jottings_II.png" />
+    <Resource Include="Images\Botany_Jottings_III.png" />
+    <Resource Include="Images\Broken_Battery.png" />
+    <Resource Include="Images\Carnivorous_Mutae_Jottings.png" />
+    <Resource Include="Images\Carnivorous_Mutae_Seeds.png" />
+    <Resource Include="Images\Chilled_Lava.png" />
+    <Resource Include="Images\Cloth_Dye.png" />
+    <Resource Include="Images\Conductor_Metal.png" />
+    <Resource Include="Images\Crystal_Rock.png" />
+    <Resource Include="Images\Crystal_Shards.png" />
+    <Resource Include="Images\Desert_History_I.png" />
+    <Resource Include="Images\Desert_History_II.png" />
+    <Resource Include="Images\Desert_History_III.png" />
+    <Resource Include="Images\Desert_Rope.png" />
+    <Resource Include="Images\Desert_Steel_Ingot.png" />
+    <Resource Include="Images\Desert_Steel_Sheet.png" />
+    <Resource Include="Images\Desert_Stone.png" />
+    <Resource Include="Images\Diamagnetic_Sand.png" />
+    <Resource Include="Images\Empowering_Crystal.png" />
+    <Resource Include="Images\Fabric.png" />
+    <Resource Include="Images\Fertile_Soil.png" />
+    <Resource Include="Images\Fertilizer.png" />
+    <Resource Include="Images\Fireproof_Cloth.png" />
+    <Resource Include="Images\Fire_Gem.png" />
+    <Resource Include="Images\Flammable_Dust.png" />
+    <Resource Include="Images\Fluid_Conduct.png" />
+    <Resource Include="Images\Fluid_Vessel.png" />
+    <Resource Include="Images\Flux_Energy_Jottings.png" />
+    <Resource Include="Images\Forest_Fruits.png" />
+    <Resource Include="Images\Forest_History_I.png" />
+    <Resource Include="Images\Forest_History_II.png" />
+    <Resource Include="Images\Forest_History_III.png" />
+    <Resource Include="Images\Foundry_Rests.png" />
+    <Resource Include="Images\Fruit_Bowl.png" />
+    <Resource Include="Images\Glass_Lenses.png" />
+    <Resource Include="Images\Gold_Runes.png" />
+    <Resource Include="Images\Gold_Strands.png" />
+    <Resource Include="Images\Golem_Chisel.png" />
+    <Resource Include="Images\Golem_Core.png" />
+    <Resource Include="Images\Golem_Designs_I.png" />
+    <Resource Include="Images\Golem_Designs_II.png" />
+    <Resource Include="Images\Golem_Designs_III.png" />
+    <Resource Include="Images\Golem_History_I.png" />
+    <Resource Include="Images\Golem_History_II.png" />
+    <Resource Include="Images\Golem_History_III.png" />
+    <Resource Include="Images\Golem_King_Energy_Crystal.png" />
+    <Resource Include="Images\Golem_King_Jottings.png" />
+    <Resource Include="Images\Golem_Volume.png" />
+    <Resource Include="Images\Hardened_Steel.png" />
+    <Resource Include="Images\High_Levitation_Core.png" />
+    <Resource Include="Images\Inflammable_Liquid.png" />
+    <Resource Include="Images\Insulating_Dust.png" />
+    <Resource Include="Images\Iron_Bar.png" />
+    <Resource Include="Images\Life_Fluid.png" />
+    <Resource Include="Images\Light_Essence.png" />
+    <Resource Include="Images\Magic_Mushroom.png" />
+    <Resource Include="Images\Magic_Wood.png" />
+    <Resource Include="Images\Magnetic_Core.png" />
+    <Resource Include="Images\Magnetic_Tool.png" />
+    <Resource Include="Images\Magnetite.png" />
+    <Resource Include="Images\Mercury.png" />
+    <Resource Include="Images\Naja_Jottings.png" />
+    <Resource Include="Images\Nutritive_Water.png" />
+    <Resource Include="Images\Old_Bulb.png" />
+    <Resource Include="Images\Old_Golem_Minion_Design.png" />
+    <Resource Include="Images\Petals.png" />
+    <Resource Include="Images\Plant_Flesh.png" />
+    <Resource Include="Images\Plastic_Film.png" />
+    <Resource Include="Images\Power_Supply.png" />
+    <Resource Include="Images\Preserved_Root.png" />
+    <Resource Include="Images\Pure_Acid.png" />
+    <Resource Include="Images\Resistant_Glass.png" />
+    <Resource Include="Images\Root.png" />
+    <Resource Include="Images\Rune_Tool.png" />
+    <Resource Include="Images\Soldering_Iron.png" />
+    <Resource Include="Images\Speed_Powder.png" />
+    <Resource Include="Images\Straw.png" />
+    <Resource Include="Images\Strong_Leaves.png" />
+    <Resource Include="Images\Tech_History_I.png" />
+    <Resource Include="Images\Tech_History_II.png" />
+    <Resource Include="Images\Tech_History_III.png" />
+    <Resource Include="Images\Teethstone.png" />
+    <Resource Include="Images\Tesla_Coil_Engine.png" />
+    <Resource Include="Images\Thermo_Magnetic_Engine.png" />
+    <Resource Include="Images\Treated_Wood.png" />
+    <Resource Include="Images\Triple_Cell_Battery.png" />
+    <Resource Include="Images\Tungsten_Reel.png" />
+    <Resource Include="Images\Vacuum_Tube.png" />
+    <Resource Include="Images\Venomous_Spores.png" />
+    <Resource Include="Images\Volcanic_Stone.png" />
+    <Resource Include="Images\Water_Sphere.png" />
+    <Resource Include="Images\Welding_Gun.png" />
+    <Resource Include="Images\Welding_Rods.png" />
+    <Resource Include="Images\Whetstone.png" />
+    <Resource Include="Images\White_Stone.png" />
+    <Resource Include="Images\Wires.png" />
+    <Resource Include="Images\Wolfram_Rock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ancient_Pot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Broken_Sword.png" />
+    <Resource Include="Images\Water_Lamp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ancient_Sacred_Volume.png" />
+    <Resource Include="Images\Argon_Bottle.png" />
+    <Resource Include="Images\Bomb_Detonator.png" />
+    <Resource Include="Images\Bone_Fragment.png" />
+    <Resource Include="Images\Carbon_Fiber_Plate.png" />
+    <Resource Include="Images\Coins.png" />
+    <Resource Include="Images\Copper_Reel.png" />
+    <Resource Include="Images\Desert_Lava_Idol.png" />
+    <Resource Include="Images\Dimensional_Fungus.png" />
+    <Resource Include="Images\Dimensional_Garbage.png" />
+    <Resource Include="Images\Dimensional_Res._Mineral_Ore.png" />
+    <Resource Include="Images\Dimensional_Resistant_Glass.png" />
+    <Resource Include="Images\Dimensional_Resistant_Metal.png" />
+    <Resource Include="Images\Energy_Capacitor.png" />
+    <Resource Include="Images\Monster_Skull.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Modified_Seeds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Forest_Wood_Figure.png" />
+    <Resource Include="Images\Fossil_Bone.png" />
+    <Resource Include="Images\Golem_Statue.png" />
+    <Resource Include="Images\Jewels.png" />
+    <Resource Include="Images\Plastic_Cloth.png" />
+    <Resource Include="Images\Tech_Recycled_Metal_Ball.png" />
+    <Resource Include="Images\Toxic_Liquid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Heavy_Metal_Plates.png" />
+    <Resource Include="Images\Small_Spectral_Flame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Moonlighter-Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Iron_Boots.png" />
+    <Resource Include="Images\Iron_Boots_II.png" />
+    <Resource Include="Images\Iron_Boots_III.png" />
+    <Resource Include="Images\Iron_Boots_IV.png" />
+    <Resource Include="Images\Iron_Chestplate.png" />
+    <Resource Include="Images\Iron_Chestplate_II.png" />
+    <Resource Include="Images\Iron_Chestplate_III.png" />
+    <Resource Include="Images\Iron_Chestplate_IV.png" />
+    <Resource Include="Images\Iron_Helmet.png" />
+    <Resource Include="Images\Iron_Helmet_II.png" />
+    <Resource Include="Images\Iron_Helmet_III.png" />
+    <Resource Include="Images\Iron_Helmet_IV.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\splash.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

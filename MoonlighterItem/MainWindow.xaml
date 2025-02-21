@@ -1,0 +1,78 @@
+﻿<Window x:Class="MoonlighterItem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Moonlighter Guide" Height="934" Width="1483"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="WindowStyler.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Border x:Name="MainBorder" Background="#FFDAC29E" Margin="10" CornerRadius="23 20 20 23">
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="5" BlurRadius="10" Opacity="0.5" Color="Black"/>
+        </Border.Effect>
+        <Grid>
+
+            <!-- Элементы для изменения размера -->
+            <Thumb x:Name="ResizeThumbRight" Width="5" HorizontalAlignment="Right" Cursor="SizeWE" DragDelta="ResizeThumb_DragDelta" Background="Transparent" Panel.ZIndex="1"/>
+            <Thumb x:Name="ResizeThumbBottom" Height="5" VerticalAlignment="Bottom" Cursor="SizeNS" DragDelta="ResizeThumb_DragDelta" Background="Transparent" Panel.ZIndex="1"/>
+            <Thumb x:Name="ResizeThumbBottomRight" Width="10" Height="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" DragDelta="ResizeThumb_DragDelta" Background="Transparent" Panel.ZIndex="1"/>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Боковая панель с кнопками -->
+                <Border x:Name="SlidePanel" MouseLeftButtonDown="Border_MouseLeftButtonDown" MouseMove="Border_MouseMove" MouseLeftButtonUp="Border_MouseLeftButtonUp" CornerRadius="20 0 0 20">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FF3A6351" Offset="0"/>
+                            <GradientStop Color="#FF2A5241" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid Margin="10,10,10,10">
+                        <!-- Определяем строки -->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- Для логотипа -->
+                            <RowDefinition Height="Auto"/>
+                            <!-- Для кнопок навигации -->
+                            <RowDefinition Height="*"/>
+                            <!-- Пустое пространство -->
+                            <RowDefinition Height="Auto"/>
+                            <!-- Для кнопок "Свернуть" и "Выход" -->
+                        </Grid.RowDefinitions>
+
+                        <!-- Логотип -->
+                        <Image Source="Images/Moonlighter-Logo.png" Width="170" Height="70" Stretch="Fill" Style="{StaticResource LogoStyle}"/>
+
+                        <!-- Кнопки навигации -->
+                        <StackPanel Grid.Row="1" Margin="0 20 0 20">
+                            <Button x:Name="Home" Content="Главная" Style="{StaticResource HoverButtonStyle}" Margin="0 0 0 20" Click="Home_Click" IsEnabled="False"/>
+                            <Button x:Name="Artifacts" Content="Артефакты" Style="{StaticResource HoverButtonStyle}" Margin="0 0 0 20" Click="Artifacts_Click"/>
+                            <Button x:Name="Info" Content="О программе" Style="{StaticResource HoverButtonStyle}" Margin="0 0 0 20" Click="Info_Click"/>
+                        </StackPanel>
+                        <!-- Пустое пространство (растягивается) -->
+                        <Grid Grid.Row="2"/>
+                        <!-- Кнопки "Свернуть" и "Выход" -->
+                        <StackPanel Grid.Row="3" Margin="0 20 0 0">
+                            <Button x:Name="Maximize" Content="Развернуть" Style="{StaticResource HoverButtonStyle}" Margin="0 0 0 20" Click="Maximize_Click"/>
+                            <Button x:Name="Minimize" Content="Свернуть" Style="{StaticResource HoverButtonStyle}" Margin="0 0 0 20" Click="Minimize_Click"/>
+                            <Button x:Name="Exit" Content="Выход" Style="{StaticResource HoverButtonStyle}" Margin="0 0 0 20" Click="Exit_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <!-- Основная область для отображения страниц -->
+                <Frame x:Name="MainFrame" Grid.Column="1" Background="Transparent" NavigationUIVisibility="Hidden" MouseLeftButtonDown="Border_MouseLeftButtonDown" MouseMove="Border_MouseMove" MouseLeftButtonUp="Border_MouseLeftButtonUp">
+                </Frame>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

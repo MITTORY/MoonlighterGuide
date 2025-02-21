@@ -1,0 +1,47 @@
+﻿<Page x:Class="MoonlighterItem.InfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="InfoPage"
+      Background="Transparent">
+
+    <StackPanel Margin="20" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <!-- Заголовок -->
+        <TextBlock Text="Информация о программе" 
+                   FontSize="30" FontWeight="ExtraBold" TextAlignment="Center" Margin="0,0,0,20"
+                   Foreground="#FF1B2A24"/>
+
+        <!-- Информация об авторе -->
+        <TextBlock Text="Абзалимов Айдар Амирович (MITTORY)" 
+           FontSize="20" FontWeight="DemiBold" TextWrapping="Wrap" TextAlignment="Center"
+           Foreground="#FF2E4A42" Cursor=""/>
+
+        <!-- GitHub -->
+        <TextBlock x:Name="GitHubLink"  Text="GitHub: MITTORY" 
+           FontSize="20" FontWeight="DemiBold" TextWrapping="Wrap" TextAlignment="Center"
+           Foreground="#FF2E4A42"
+           MouseLeftButtonDown="GitHubLink_MouseLeftButtonDown"
+           Cursor="Hand"
+           ToolTip="Перейти на GitHub"/>
+
+        <!-- Обратная связь -->
+        <TextBlock x:Name="EmailLink"  Text="novo1233@mail.ru" 
+           FontSize="20" FontWeight="DemiBold" TextWrapping="Wrap" TextAlignment="Center" Margin="0,0,0,20"
+           Foreground="#FF2E4A42"
+           MouseLeftButtonDown="EmailLink_MouseLeftButtonDown"
+           Cursor="Hand"
+           ToolTip="Скопировать"/>
+
+        <!-- Лицензия -->
+        <TextBlock x:Name="LicenseLink" Text="Лицензия: MIT License" 
+           FontSize="20" FontWeight="DemiBold" TextWrapping="Wrap" TextAlignment="Center" 
+           Foreground="#FF2E4A42"
+           MouseLeftButtonDown="LicenseLink_MouseLeftButtonDown"
+           Cursor="Hand"
+           ToolTip="Открыть лицензию MIT"/>
+
+        <!-- Копирайт -->
+        <TextBlock Text="© 2025 MITTORY. Все права защищены." 
+           FontSize="20" FontWeight="DemiBold" TextWrapping="Wrap" TextAlignment="Center" 
+           Foreground="#FF2E4A42"/>
+    </StackPanel>
+</Page>
