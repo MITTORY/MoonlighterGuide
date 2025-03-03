@@ -2,51 +2,60 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace MoonlighterItem
 {
-    public partial class ArtifactsPage : Page
+    /// <summary>
+    /// Логика взаимодействия для ArmorsPage.xaml
+    /// </summary>
+    public partial class ArmorsPage : Page
     {
-        private List<Artifact> _allArtifacts;
+        private List<Armors> _allArmors;
 
-        public ArtifactsPage()
+        public ArmorsPage()
         {
             InitializeComponent();
 
             // Загрузка данных из JSON
-            LoadArtifacts();
+            LoadArmors();
 
             // Заполнение ComboBox подземельями
-            var dungeons = new List<string>
+            var Type = new List<string>
     {
-        "Все подземелья",
-        "Подземелье големов",
-        "Лесное подземелье",
-        "Пустынное подземелье",
-        "Технологичное подземелье",
-        "Межпространственное подземелье"
+        "Вся броня",
+        "Тканевая броня",
+        "Железная броня",
+        "Стальная броня",
+        "Композитная броня"
     };
 
-            DungeonFilterComboBox.ItemsSource = dungeons;
+            TypeFilterComboBox.ItemsSource = Type;
 
             // Установка начального значения ComboBox
-            DungeonFilterComboBox.SelectedIndex = 0;
+            TypeFilterComboBox.SelectedIndex = 0;
 
             // Установка начального значения сортировки
             SortComboBox.SelectedIndex = 0;
         }
 
-        private void LoadArtifacts()
+        private void LoadArmors()
         {
             try
             {
                 // Путь к JSON-файлу
-                string jsonPath = "artifacts.json";
+                string jsonPath = "armors.json";
 
                 // Проверка существования файла
                 if (File.Exists(jsonPath))
@@ -55,14 +64,14 @@ namespace MoonlighterItem
                     string json = File.ReadAllText(jsonPath);
 
                     // Десериализация JSON в список предметов
-                    _allArtifacts = JsonSerializer.Deserialize<List<Artifact>>(json);
+                    _allArmors = JsonSerializer.Deserialize<List<Armors>>(json);
 
                     // Отображение всех предметов
-                    ArtifactsList.ItemsSource = _allArtifacts;
+                    ArmorsList.ItemsSource = _allArmors;
                 }
                 else
                 {
-                    MessageBox.Show("Файл artifacts.json не найден.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Файл Armors.json не найден.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception ex)
@@ -77,7 +86,7 @@ namespace MoonlighterItem
             if (SearchTextBox.Text == "Поиск...")
             {
                 SearchTextBox.Text = "";
-                SearchTextBox.Foreground = Brushes.Black; // Устанавливаем цвет текста для ввода
+                SearchTextBox.Foreground = Brushes.Black;
             }
         }
 
@@ -87,7 +96,7 @@ namespace MoonlighterItem
             if (string.IsNullOrWhiteSpace(SearchTextBox.Text))
             {
                 SearchTextBox.Text = "Поиск...";
-                SearchTextBox.Foreground = Brushes.Gray; // Устанавливаем серый цвет для подсказки
+                SearchTextBox.Foreground = Brushes.Gray;
             }
         }
 
@@ -98,7 +107,7 @@ namespace MoonlighterItem
         }
 
         // Обработчик изменения выбора в ComboBox
-        private void DungeonFilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void TypeFilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ApplyFilters();
         }
@@ -110,8 +119,8 @@ namespace MoonlighterItem
 
         private void ApplyFilters()
         {
-            // Проверяем, что _allArtifacts не равен null
-            if (_allArtifacts == null)
+            // Проверяем, что _allarmors не равен null
+            if (_allArmors == null)
             {
                 return; // Прерываем выполнение, если данные не загружены
             }
@@ -126,16 +135,16 @@ namespace MoonlighterItem
             }
 
             // Проверяем, что выбранный элемент в ComboBox не равен null
-            var selectedDungeon = DungeonFilterComboBox.SelectedItem as string;
-            if (selectedDungeon == null)
+            var selectedType = TypeFilterComboBox.SelectedItem as string;
+            if (selectedType == null)
             {
                 return; // Прерываем выполнение, если подземелье не выбрано
             }
 
             // Применяем фильтры
-            var filteredArtifacts = _allArtifacts
-                .Where(artifact => string.IsNullOrEmpty(searchText) || artifact.Name.ToLower().Contains(searchText))
-                .Where(artifact => selectedDungeon == "Все подземелья" || artifact.Dungeon == selectedDungeon)
+            var filteredArmors = _allArmors
+                .Where(armor => string.IsNullOrEmpty(searchText) || armor.Name.ToLower().Contains(searchText))
+                .Where(armor => selectedType == "Вся броня" || armor.Type == selectedType)
                 .ToList();
 
             // Применяем сортировку
@@ -143,37 +152,37 @@ namespace MoonlighterItem
             switch (selectedSort)
             {
                 case "Сортировка: По названию (А-Я)":
-                    filteredArtifacts = filteredArtifacts.OrderBy(artifact => artifact.Name).ToList();
+                    filteredArmors = filteredArmors.OrderBy(armor => armor.Name).ToList();
                     break;
                 case "Сортировка: По названию (Я-А)":
-                    filteredArtifacts = filteredArtifacts.OrderByDescending(artifact => artifact.Name).ToList();
+                    filteredArmors = filteredArmors.OrderByDescending(armor => armor.Name).ToList();
                     break;
                 case "Сортировка: По цене (↑)":
-                    filteredArtifacts = filteredArtifacts.OrderBy(artifact => artifact.BasePrice).ToList();
+                    filteredArmors = filteredArmors.OrderBy(armor => armor.BasePrice).ToList();
                     break;
                 case "Сортировка: По цене (↓)":
-                    filteredArtifacts = filteredArtifacts.OrderByDescending(artifact => artifact.BasePrice).ToList();
+                    filteredArmors = filteredArmors.OrderByDescending(armor => armor.BasePrice).ToList();
                     break;
-                case "Сортировка: По подземелью (А-Я)":
-                    filteredArtifacts = filteredArtifacts.OrderBy(artifact => artifact.Dungeon).ToList();
+                case "Сортировка: По виду брони (А-Я)":
+                    filteredArmors = filteredArmors.OrderBy(armor => armor.Type).ToList();
                     break;
                 case "Без сортировки":
-                    // Не применяем сортировку, оставляем исходный порядок
                     break;
             }
 
             // Обновляем список предметов
-            ArtifactsList.ItemsSource = filteredArtifacts;
+            ArmorsList.ItemsSource = filteredArmors;
         }
 
         // Класс предмета
-        public class Artifact
+        public class Armors
         {
             public string Name { get; set; }
             public string ImagePath { get; set; }
+            public int LowPrice { get; set; }
             public int BasePrice { get; set; }
             public int HighDemandPrice { get; set; }
-            public string Dungeon { get; set; }
+            public string Type { get; set; }
         }
     }
 }

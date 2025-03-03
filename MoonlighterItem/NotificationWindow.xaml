@@ -5,22 +5,46 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        Width="300"
-        Height="100"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        SizeToContent="WidthAndHeight"
+        Topmost="True"
+        Opacity="1" Cursor="">
 
-    <Border Background="#FF3A6351" CornerRadius="15">
+    <Border CornerRadius="15"
+            Padding="20"
+            Background="#CC2A4D41">
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Иконка уведомления -->
+
+
+            <!-- Основной текст -->
             <TextBlock x:Name="NotificationText"
-                       Text="Текст уведомления"
                        FontSize="16"
-                       FontWeight="Bold"
                        Foreground="White"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
                        TextAlignment="Center"
-                       TextWrapping="Wrap"/>
+                       TextWrapping="Wrap"
+                       MaxWidth="400"
+                       Grid.Row="1"/>
+
+            <!-- Кнопка закрытия -->
+            <Button Content="X"
+                    Width="24"
+                    Height="24"
+                    FontWeight="Bold"
+                    Background="Transparent"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Click="Close_Click"/>
         </Grid>
     </Border>
 </Window>

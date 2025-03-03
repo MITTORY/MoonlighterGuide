@@ -33,6 +33,8 @@ namespace MoonlighterItem
             MainFrame.NavigationService.Navigate(new WelcomePage());
             Home.IsEnabled = false;
             Artifacts.IsEnabled = true;
+            Armors.IsEnabled = true;
+            //Favorites.IsEnabled = true;
             Info.IsEnabled = true;
         }
 
@@ -41,7 +43,49 @@ namespace MoonlighterItem
             MainFrame.NavigationService.Navigate(new ArtifactsPage());
             Home.IsEnabled = true;
             Artifacts.IsEnabled = false;
+            Armors.IsEnabled = true;
+            //Favorites.IsEnabled = true;
             Info.IsEnabled = true;
+        }
+
+        private void Armors_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new ArmorsPage());
+            Home.IsEnabled = true;
+            Artifacts.IsEnabled = true;
+            Armors.IsEnabled = false;
+            //Favorites.IsEnabled = true;
+            Info.IsEnabled = true;
+        }
+
+        private void Weapons_Click(object sender, RoutedEventArgs e)
+        {
+            NotificationWindow notification = new NotificationWindow("Эта страница находится в разработке!\nМы активно работаем над её созданием.");
+            notification.Show();
+
+            var timer = new System.Windows.Threading.DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(2);
+            timer.Tick += (s, args) =>
+            {
+                notification.Close();
+                timer.Stop();
+            };
+            timer.Start();
+        }
+
+        private void Favorites_Click(object sender, RoutedEventArgs e)
+        {
+            NotificationWindow notification = new NotificationWindow("Эта страница находится в разработке!\nМы активно работаем над её созданием.");
+            notification.Show();
+
+            var timer = new System.Windows.Threading.DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(2);
+            timer.Tick += (s, args) =>
+            {
+                notification.Close();
+                timer.Stop();
+            };
+            timer.Start();
         }
 
         private void Info_Click(object sender, RoutedEventArgs e)
@@ -49,16 +93,9 @@ namespace MoonlighterItem
             MainFrame.NavigationService.Navigate(new InfoPage());
             Home.IsEnabled = true;
             Artifacts.IsEnabled = true;
+            //Favorites.IsEnabled = true;
             Info.IsEnabled = false;
         }
-
-        //private void Armor_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainFrame.NavigationService.Navigate(new ArmorPage());
-        //    Home.IsEnabled = true;
-        //    Artifacts.IsEnabled = true;
-        //    //Armor.IsEnabled = false;
-        //}
 
         private void Maximize_Click(object sender, RoutedEventArgs e)
         {
@@ -69,6 +106,7 @@ namespace MoonlighterItem
                 // Восстанавливаем CornerRadius для всех элементов
                 SetWindowCornerRadius(23, 20, 20, 23); // Основной Border
                 SetSlidePanelCornerRadius(20, 0, 0, 20); // SlidePanel
+                Maximize.Content = "Развернуть";
             }
             else
             {
@@ -77,6 +115,7 @@ namespace MoonlighterItem
                 // Убираем CornerRadius для всех элементов
                 SetWindowCornerRadius(0, 0, 0, 0); // Основной Border
                 SetSlidePanelCornerRadius(0, 0, 0, 0); // SlidePanel
+                Maximize.Content = "Уменьшить";
             }
         }
 

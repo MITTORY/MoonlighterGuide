@@ -1,4 +1,4 @@
-﻿<Page x:Class="MoonlighterItem.ArtifactsPage"
+﻿<Page x:Class="MoonlighterItem.ArmorsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:local="clr-namespace:MoonlighterItem"
@@ -80,7 +80,7 @@
                 <Border.Effect>
                     <DropShadowEffect ShadowDepth="2" BlurRadius="5" Opacity="0.3" Color="Black"/>
                 </Border.Effect>
-                <ComboBox x:Name="DungeonFilterComboBox" 
+                <ComboBox x:Name="TypeFilterComboBox" 
                   Height="30" 
                   Padding="5" 
                   FontSize="20"
@@ -90,7 +90,7 @@
                   Foreground="Black"
                   BorderThickness="0"
                   Background="Transparent"
-                  SelectionChanged="DungeonFilterComboBox_SelectionChanged"
+                  SelectionChanged="TypeFilterComboBox_SelectionChanged"
                   DisplayMemberPath=".">
                     <!-- Стиль для ComboBox -->
                     <ComboBox.Style>
@@ -314,7 +314,7 @@
 
         <!-- Список предметов -->
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Margin="0,80,0,0">
-            <ItemsControl x:Name="ArtifactsList">
+            <ItemsControl x:Name="ArmorsList">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel HorizontalAlignment="Center"/>
@@ -340,7 +340,7 @@
                             <!-- Контент блока -->
                             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <!-- Название предмета -->
-                                <TextBlock x:Name="ArtifactNameTextBlock"
+                                <TextBlock x:Name="ArmorNameTextBlock"
                Text="{Binding Name}" 
                FontFamily="TT Milks" 
                FontSize="18" 
@@ -351,7 +351,7 @@
                Margin="0,0,0,0"/>
 
                                 <!-- Подземелье -->
-                                <TextBlock Text="{Binding Dungeon}" 
+                                <TextBlock Text="{Binding Type}" 
                FontFamily="TT Milks" 
                FontSize="16" 
                Foreground="#FFE0E0E0" 
@@ -365,16 +365,24 @@
            Margin="0,10,0,5"
            Stretch="Uniform"/>
 
+                                <!-- Низкая цена -->
+                                <TextBlock Text="{Binding LowPrice, StringFormat='Низкая стоимость: {0}'}" 
+               FontFamily="TT Milks" 
+               FontSize="18" 
+               Foreground="LightGreen" 
+               TextAlignment="Center"
+               Margin="0,10,0,0"/>
+
                                 <!-- Базовая цена -->
                                 <TextBlock Text="{Binding BasePrice, StringFormat='Базовая стоимость: {0}'}" 
                FontFamily="TT Milks" 
                FontSize="18" 
                Foreground="GreenYellow" 
                TextAlignment="Center"
-               Margin="0,10,0,0"/>
+               Margin="0,0,0,0"/>
 
                                 <!-- Цена при спросе -->
-                                <TextBlock Text="{Binding HighDemandPrice, StringFormat='Цена при спросе: {0}'}" 
+                                <TextBlock Text="{Binding HighDemandPrice, StringFormat='Высокая стоимость: {0}'}" 
                FontFamily="TT Milks" 
                FontSize="18" 
                Foreground="Orange" 
